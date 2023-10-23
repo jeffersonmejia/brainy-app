@@ -3,7 +3,8 @@ const d = document,
 	$searchContent = d.querySelector('.search-dialog input'),
 	$filter = d.querySelector('.filter-dialog'),
 	$coursesName = d.querySelectorAll('.course-item-name'),
-	$coursesTeacher = d.querySelectorAll('.course-item-teacher')
+	$coursesTeacher = d.querySelectorAll('.course-item-teacher'),
+	$topNavbar = d.querySelector('.top-navbar-mobile')
 
 function toggleSearchDialog() {
 	$search.classList.toggle('hidden')
@@ -17,7 +18,6 @@ function toggleFilterItems() {
 function searchItem(search) {
 	const type = search.dataset.filterBy,
 		query = search.value
-	console.log(type)
 	if (!type) {
 		filterBySubject(query)
 	} else {
@@ -51,7 +51,6 @@ function filterByTeacher(query) {
 		name = name.split(' ')[1] + name.split(' ')[2]
 
 		name = name.toUpperCase()
-		console.log(name)
 		if (!name.includes(query)) {
 			$currentCourse.classList.add('hidden')
 		} else {
@@ -71,6 +70,15 @@ function changeFilterMode(filter) {
 	$filter.classList.add('hidden')
 }
 
+function changeNavBG() {
+	const scrollY = window.scrollY
+	if (scrollY > 20) {
+		$topNavbar.classList.add('top-navbar-mobile-bg')
+	} else {
+		$topNavbar.classList.remove('top-navbar-mobile-bg')
+	}
+}
+
 d.addEventListener('click', (e) => {
 	if (e.target.matches('#search-button')) {
 		toggleSearchDialog()
@@ -82,8 +90,15 @@ d.addEventListener('click', (e) => {
 		changeFilterMode(e.target)
 	}
 })
+d.addEventListener('scroll', (e) => {
+	changeNavBG()
+})
 d.addEventListener('keyup', (e) => {
 	if (e.target.matches('.search-dialog input')) {
 		searchItem(e.target)
 	}
+})
+
+$searchContent.addEventListener('blur', (e) => {
+	toggleSearchDialog()
 })

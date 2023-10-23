@@ -25,7 +25,7 @@
 }
 html {
 	background-color: var(--primary-bg-color);
-	font-family: var(--font-family);
+	font-family: 'Noto Sans', sans-serif;
 }
 h1 {
 	font-size: 1.5rem;
@@ -85,11 +85,27 @@ nav {
 .nav-items a {
 	color: inherit;
 }
+.message-item {
+	background-color: var(--secondary-bg-color);
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 0 1rem;
+}
 
-.nav-items span {
-	background-color: var(--primary-bg-color);
-	padding: 0.5rem 1rem;
-	border-radius: var(--secondary-border-radius);
+.message-item img {
+	width: 3.5rem;
+	border: var(--secondary-border);
+	border-radius: 50%;
+}
+.message-item figcaption {
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
+	border-bottom: var(--secondary-border);
+	padding: 1rem;
+	padding-top: 0.3rem;
+	width: 100%;
 }
 .message-alert::after {
 	content: '1';
@@ -105,6 +121,14 @@ nav {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+.message-item-content {
+	color: var(--secondary-text-color);
+}
+.nav-items span {
+	background-color: var(--primary-bg-color);
+	padding: 0.5rem 1rem;
+	border-radius: var(--secondary-border-radius);
 }
 span.nav-item-on {
 	background-color: transparent;
@@ -205,7 +229,9 @@ span.nav-item-on {
 	align-items: center;
 	gap: 4px;
 }
-
+main {
+	margin-bottom: 3.5em;
+}
 .course-item h4 {
 	font-size: 0.8rem;
 }

@@ -20,7 +20,14 @@
 		<link rel="stylesheet" href="styles/home.css" />
 	</head>
 	<body>
-		<h1 class="logo">BRAINY</h1>
+		<ul class="top-navbar-mobile">
+			<li>
+				<h1 class="logo">BRAINY</h1>
+			</li>
+			<li>
+				<span class="material-symbols-outlined" id="search-button">search</span>
+			</li>
+		</ul>
 		<form class="search-dialog hidden">
 			<input type="search" placeholder="Escribe tu búsqueda" data-search-type />
 			<span class="material-symbols-outlined" id="filter-button"> tune </span>
@@ -83,15 +90,17 @@
 				</ul>
 			</article>
 		</main>
-		<nav>
+		<nav class="bottom-navbar-mobile">
 			<ul class="nav-items">
 				<li>
 					<span class="material-symbols-outlined nav-item-on"> home </span>
 				</li>
 				<li>
-					<span class="material-symbols-outlined" id="search-button">
-						search
-					</span>
+					<a href="messages.html">
+						<span class="material-symbols-outlined message-alert">
+							message
+						</span>
+					</a>
 				</li>
 
 				<li>
