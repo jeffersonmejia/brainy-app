@@ -146,6 +146,11 @@ span.nav-item-on {
 	padding-bottom: 0;
 	list-style: none;
 	justify-content: space-between;
+	position: sticky;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 1rem 1.5rem;
 }
 .top-navbar-mobile a {
 	color: inherit;
@@ -177,9 +182,8 @@ main {
 	top: 0;
 	left: 0;
 	right: 0;
-	padding: 1rem 1.5rem;
 }
-.activities-header-bg {
+.top-navbar-bg {
 	background-color: var(--secondary-bg-color);
 	border-bottom: var(--secondary-border);
 }

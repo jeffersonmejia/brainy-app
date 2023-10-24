@@ -4,7 +4,7 @@ const d = document,
 	$filter = d.querySelector('.filter-dialog'),
 	$coursesName = d.querySelectorAll('.course-item-name'),
 	$coursesTeacher = d.querySelectorAll('.course-item-teacher'),
-	$activitiesHeader = d.querySelector('.activities-header')
+	$topNavbar = d.querySelector('.top-navbar-mobile')
 
 function toggleSearchDialog() {
 	$search.classList.toggle('hidden')
@@ -72,10 +72,10 @@ function changeFilterMode(filter) {
 
 function changeNavBG() {
 	const scrollY = window.scrollY
-	if (scrollY > 40) {
-		$activitiesHeader.classList.add('activities-header-bg')
+	if (scrollY > 20) {
+		$topNavbar.classList.add('top-navbar-bg')
 	} else {
-		$activitiesHeader.classList.remove('activities-header-bg')
+		$topNavbar.classList.remove('top-navbar-bg')
 	}
 }
 

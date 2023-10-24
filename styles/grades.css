@@ -221,6 +221,22 @@ span.nav-item-on {
 	align-items: center;
 	gap: 2px;
 }
+.top-navbar-avg {
+	display: flex;
+	align-items: center;
+	padding: 0.1rem 0.5rem;
+	border-radius: var(--primary-border-radius);
+	background-color: var(--secondary-bg-color);
+}
+.top-navbar-mobile-bg .top-navbar-avg {
+	background-color: var(--primary-bg-color);
+}
+.top-navbar-avg span {
+	font-size: 1rem;
+}
+.top-navbar-avg h4 {
+	font-size: 0.8rem;
+}
 .section-header span {
 	font-size: 1rem;
 }
