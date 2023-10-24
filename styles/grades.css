@@ -208,10 +208,16 @@ span.nav-item-on {
 	padding: 1rem;
 	border-radius: var(--primary-border-radius);
 	background-color: var(--secondary-bg-color);
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
 }
 
 .subject-item :is(h4, h5) {
 	font-size: 0.8rem;
+}
+.subject-item span {
+	font-size: 1.1rem;
 }
 .subject-item h5 {
 	font-weight: 400;
