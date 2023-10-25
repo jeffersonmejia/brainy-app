@@ -51,7 +51,8 @@ input[type='reset'] {
 body {
 	height: 85vh;
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	justify-content: center;
 }
 
 form {
@@ -81,5 +82,43 @@ fieldset {
 }
 .group-forget li {
 	font-size: small;
+	color: var(--secondary-text-color);
+}
+
+footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding: 2rem;
+	gap: 4px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	color: var(--secondary-text-color);
+}
+footer a {
+	text-decoration: none;
+	color: var(--text-color-gray);
+	font-size: 0.8rem;
+}
+footer a:hover {
+	text-decoration: underline;
+}
+footer .links {
+	list-style: none;
+	display: flex;
+	gap: 8px;
+}
+footer .separator {
+	font-size: 8px;
+	display: flex;
+	align-items: center;
+	color: var(--text-color-gray);
+}
+footer small {
+	text-align: center;
+	display: block;
 	color: var(--secondary-text-color);
 }

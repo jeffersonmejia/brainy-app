@@ -167,7 +167,6 @@ span.nav-item-on {
 }
 .course-item {
 	background-color: var(--secondary-bg-color);
-	border: var(--secondary-border);
 	border-radius: var(--primary-border-radius);
 	height: fit-content;
 	text-decoration: none;
@@ -177,7 +176,9 @@ span.nav-item-on {
 	margin-bottom: 80px;
 }
 .course-item-bg {
-	height: 150px;
+	height: 160px;
+	width: 100%;
+	object-fit: cover;
 	border-top-left-radius: var(--primary-border-radius);
 	border-top-right-radius: var(--primary-border-radius);
 	background-color: var(--tertiary-bg-color);
@@ -185,6 +186,8 @@ span.nav-item-on {
 
 .course-item ul {
 	padding: 0.5rem 1rem;
+	border-bottom-right-radius: var(--primary-border-radius);
+	border-bottom-left-radius: var(--primary-border-radius);
 }
 .course-item li {
 	display: flex;
