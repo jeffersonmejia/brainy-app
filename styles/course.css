@@ -25,6 +25,9 @@ html {
 	background-color: var(--primary-bg-color);
 	font-family: var(--primary-font-family);
 }
+img {
+	width: 100%;
+}
 h1 {
 	font-size: 1.5rem;
 }
@@ -43,8 +46,112 @@ input {
 	padding-left: 0.5rem;
 	height: 2rem;
 }
+.middel-navbar-mobile {
+	background-color: var(--secondary-bg-color);
+	position: fixed;
+	bottom: 8vh;
+	left: 0;
+	right: 0;
+}
+.middel-navbar-mobile ul {
+	display: flex;
+	list-style: none;
+	justify-content: space-between;
+	padding: 0 1.5rem;
+}
+.middel-navbar-mobile li {
+	font-size: small;
+	padding: 1rem 0.7rem;
+	border-top: 4px solid transparent;
+	border-bottom: 8px solid transparent;
+}
+main {
+	padding: 0 1.5rem;
+}
+.presentation {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 1.5rem 1rem;
+	border-radius: var(--primary-border-radius);
+	background-color: var(--secondary-bg-color);
+}
 
-nav {
+.presentation-item {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+.avatar {
+	display: flex;
+	gap: 8px;
+}
+.presentation-item :is(h4, a) {
+	font-size: 0.8rem;
+}
+.icon {
+	width: 30px;
+}
+.avatar {
+	width: 60px;
+	height: 60px;
+}
+.presentation-subject-title {
+	gap: 4px;
+}
+.presentation-grettings {
+	font-weight: 300;
+}
+.presentation-subject-title span {
+	font-size: 1rem;
+}
+.teacher-avatar figcaption {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.teacher-degree {
+	list-style: none;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+.teacher-degree li {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 0.8rem;
+}
+.teacher-degree span {
+	font-size: 1rem;
+}
+.teacher-avatar p {
+	margin-top: 4px;
+	text-align: justify;
+	font-size: 0.8rem;
+}
+section {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-bottom: 25vh;
+}
+a.primary-button {
+	border-radius: var(--secondary-border-radius);
+	text-align: center;
+	font-size: small;
+	text-decoration: none;
+	width: 90px;
+	height: 35px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+li.middel-navbar-mobile-on {
+	border-top: 4px solid var(--primary-button-color);
+	color: var(--primary-button-color);
+}
+.bottom-navbar-mobile {
 	padding: 0.5rem 1rem;
 	border-top: var(--primary-border);
 	background-color: var(--secondary-bg-color);

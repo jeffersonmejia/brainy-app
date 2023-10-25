@@ -6,7 +6,7 @@
 	--primary-border: 1px solid rgb(180, 180, 180);
 	--primary-button-color: rgb(65, 89, 228);
 	--primary-button-color-hover: rgb(118, 74, 240);
-	--primary-font-family: system-ui;
+	--primary-font-family: 'Noto Sans', sans-serif;
 }
 * {
 	margin: 0;
