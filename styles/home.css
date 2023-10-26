@@ -7,13 +7,10 @@
 	--secondary-text-color: rgb(125, 125, 125);
 	--primary-border-radius: 1rem;
 	--secondary-border-radius: 4px;
-	--primary-border: 1px solid rgb(180, 180, 180);
-	--secondary-border: 1px solid rgb(212, 212, 212);
-	--tertiary-border: 2px solid rgb(65, 89, 228);
-	--primary-button-color: rgb(65, 89, 228);
-	--primary-button-color-hover: rgb(118, 74, 240);
+	--primary-border: 1px solid rgb(230, 230, 230);
 	--item-active-bg-color: rgb(226, 255, 226);
 	--item-active-text-color: green;
+	--secondary-bg-color-dark: black;
 	--primary-font-family: 'Noto Sans', sans-serif;
 	--danger-color: red;
 }
@@ -124,10 +121,11 @@ input {
 }
 .course-item {
 	background-color: var(--secondary-bg-color);
-	border-radius: var(--primary-border-radius);
+	border-radius: var(--secondary-border-radius);
 	height: fit-content;
 	text-decoration: none;
 	color: inherit;
+	border: var(--primary-border);
 }
 .course-item:last-child {
 	margin-bottom: 80px;
@@ -142,18 +140,40 @@ input {
 }
 
 .course-item ul {
-	padding: 0.5rem 1rem;
+	padding: 1rem 0.8rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
 	border-bottom-right-radius: var(--primary-border-radius);
 	border-bottom-left-radius: var(--primary-border-radius);
 }
 .course-item li {
 	display: flex;
 	align-items: center;
-	gap: 4px;
+	justify-content: center;
+	gap: 2px;
+	width: 100%;
+	background-color: var(--primary-bg-color);
+	padding: 4px 8px;
+	border-radius: var(--primary-border-radius);
+	border: var(--primary-border);
 }
 
 .course-item h4 {
-	font-size: 0.8rem;
+	font-size: 0.7rem;
+}
+.course-item span {
+	font-size: 1rem;
+}
+
+.course-item li:first-of-type {
+	margin-bottom: 2px;
+}
+
+.course-item :is(span, h4) {
+	font-weight: 400;
+	color: gray;
 }
 
 .navbar-bottom {
@@ -180,12 +200,15 @@ input {
 	background-color: var(--primary-bg-color);
 	padding: 0.5rem 1rem;
 	border-radius: var(--secondary-border-radius);
+	border: var(--primary-border);
 }
 
 .navbar-bottom span.nav-item-on {
 	background-color: transparent;
 	color: white;
-	background-color: black;
+	color: var(--secondary-bg-color);
+	border: none;
+	background-color: var(--secondary-bg-color-dark);
 }
 
 .hidden {
