@@ -38,7 +38,7 @@ input {
 	width: 90%;
 }
 
-.top-navbar-mobile {
+.top-navbar {
 	padding: 1rem 1.5rem;
 	display: flex;
 	list-style: none;
@@ -48,13 +48,14 @@ input {
 	left: 0;
 	right: 0;
 }
-.top-navbar-mobile span {
+.top-navbar span {
 	cursor: pointer;
 }
-.top-navbar-mobile a {
+.top-navbar a {
 	color: inherit;
 }
-.top-navbar-mobile-bg {
+
+.top-navbar-bg {
 	background-color: var(--secondary-bg-color);
 	border-bottom: var(--secondary-border);
 }

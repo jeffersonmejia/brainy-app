@@ -6,9 +6,16 @@ const d = document,
 	$coursesTeacher = d.querySelectorAll('.course-item-teacher'),
 	$topNavbar = d.querySelector('.top-navbar-mobile')
 
-function toggleSearchDialog() {
-	$search.classList.toggle('hidden')
-	$searchContent.focus()
+function toggleSearchDialog(button) {
+	const isSearchOff = $search.classList.contains('hidden')
+	if (isSearchOff) {
+		$search.classList.remove('hidden')
+		button.textContent = 'search_off'
+		$searchContent.focus()
+	} else {
+		$search.classList.add('hidden')
+		button.textContent = 'search'
+	}
 }
 
 function toggleFilterItems() {
@@ -81,7 +88,7 @@ function changeNavBG() {
 
 d.addEventListener('click', (e) => {
 	if (e.target.matches('#search-button')) {
-		toggleSearchDialog()
+		toggleSearchDialog(e.target)
 	}
 	if (e.target.matches('#filter-button')) {
 		toggleFilterItems()
@@ -97,8 +104,4 @@ d.addEventListener('keyup', (e) => {
 	if (e.target.matches('.search-dialog input')) {
 		searchItem(e.target)
 	}
-})
-
-$searchContent.addEventListener('blur', (e) => {
-	toggleSearchDialog()
 })

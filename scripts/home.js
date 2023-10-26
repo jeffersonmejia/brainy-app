@@ -4,11 +4,18 @@ const d = document,
 	$filter = d.querySelector('.filter-dialog'),
 	$coursesName = d.querySelectorAll('.course-item-name'),
 	$coursesTeacher = d.querySelectorAll('.course-item-teacher'),
-	$topNavbar = d.querySelector('.top-navbar-mobile')
+	$topNavbar = d.querySelector('.top-navbar')
 
-function toggleSearchDialog() {
-	$search.classList.toggle('hidden')
-	$searchContent.focus()
+function toggleSearchDialog(button) {
+	const isSearchOff = $search.classList.contains('hidden')
+	if (isSearchOff) {
+		$search.classList.remove('hidden')
+		button.textContent = 'search_off'
+		$searchContent.focus()
+	} else {
+		$search.classList.add('hidden')
+		button.textContent = 'search'
+	}
 }
 
 function toggleFilterItems() {
@@ -73,15 +80,15 @@ function changeFilterMode(filter) {
 function changeNavBG() {
 	const scrollY = window.scrollY
 	if (scrollY > 20) {
-		$topNavbar.classList.add('top-navbar-mobile-bg')
+		$topNavbar.classList.add('top-navbar-bg')
 	} else {
-		$topNavbar.classList.remove('top-navbar-mobile-bg')
+		$topNavbar.classList.remove('top-navbar-bg')
 	}
 }
 
 d.addEventListener('click', (e) => {
 	if (e.target.matches('#search-button')) {
-		toggleSearchDialog()
+		toggleSearchDialog(e.target)
 	}
 	if (e.target.matches('#filter-button')) {
 		toggleFilterItems()
