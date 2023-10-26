@@ -62,9 +62,9 @@ function filterByTeacher(query) {
 function changeFilterMode(filter) {
 	let mode = filter.textContent
 	const parent = filter.parentElement,
-		previousFilter = parent.querySelector('.filter-item-active')
-	previousFilter.classList.remove('filter-item-active')
-	filter.classList.add('filter-item-active')
+		previousFilter = parent.querySelector('.filter-dialog-active')
+	previousFilter.classList.remove('filter-dialog-active')
+	filter.classList.add('filter-dialog-active')
 	mode = mode.toUpperCase()
 	$searchContent.setAttribute('data-filter-by', mode)
 	$filter.classList.add('hidden')
@@ -97,8 +97,4 @@ d.addEventListener('keyup', (e) => {
 	if (e.target.matches('.search-dialog input')) {
 		searchItem(e.target)
 	}
-})
-
-$searchContent.addEventListener('blur', (e) => {
-	toggleSearchDialog()
 })
