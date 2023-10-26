@@ -57,7 +57,7 @@ input {
 
 .top-navbar-bg {
 	background-color: var(--secondary-bg-color);
-	border-bottom: var(--secondary-border);
+	border-bottom: var(--primary-border);
 }
 
 .search-dialog {

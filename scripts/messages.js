@@ -4,7 +4,7 @@ const d = document,
 	$filter = d.querySelector('.filter-dialog'),
 	$coursesName = d.querySelectorAll('.course-item-name'),
 	$coursesTeacher = d.querySelectorAll('.course-item-teacher'),
-	$topNavbar = d.querySelector('.top-navbar-mobile')
+	$topNavbar = d.querySelector('.top-navbar')
 
 function toggleSearchDialog(button) {
 	const isSearchOff = $search.classList.contains('hidden')
@@ -80,9 +80,9 @@ function changeFilterMode(filter) {
 function changeNavBG() {
 	const scrollY = window.scrollY
 	if (scrollY > 20) {
-		$topNavbar.classList.add('top-navbar-mobile-bg')
+		$topNavbar.classList.add('top-navbar-bg')
 	} else {
-		$topNavbar.classList.remove('top-navbar-mobile-bg')
+		$topNavbar.classList.remove('top-navbar-bg')
 	}
 }
 

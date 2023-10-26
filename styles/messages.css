@@ -128,7 +128,7 @@ input[type='reset'] {
 	font-size: 1.1rem;
 	width: 90%;
 }
-.top-navbar-mobile {
+.top-navbar {
 	padding: 1rem 1.5rem;
 	display: flex;
 	list-style: none;
@@ -138,10 +138,10 @@ input[type='reset'] {
 	left: 0;
 	right: 0;
 }
-.top-navbar-mobile a {
+.top-navbar a {
 	color: inherit;
 }
-.top-navbar-mobile-bg {
+.top-navbar-bg {
 	background-color: var(--secondary-bg-color);
 	border-bottom: var(--secondary-border);
 }
@@ -150,9 +150,7 @@ input[type='reset'] {
 	padding: 0.5rem 1rem;
 	border-radius: var(--secondary-border-radius);
 }
-.top-navbar-mobile-bg .message-button {
-	background-color: var(--primary-bg-color);
-}
+
 .search-dialog {
 	width: 90%;
 	margin: auto;
