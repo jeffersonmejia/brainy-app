@@ -80,9 +80,9 @@ function changeFilterMode(filter) {
 function changeNavBG() {
 	const scrollY = window.scrollY
 	if (scrollY > 20) {
-		$topNavbar.classList.add('top-navbar-bg')
+		$topNavbar.classList.add('top-navbar-fixed')
 	} else {
-		$topNavbar.classList.remove('top-navbar-bg')
+		$topNavbar.classList.remove('top-navbar-fixed')
 	}
 }
 

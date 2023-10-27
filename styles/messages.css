@@ -9,13 +9,12 @@
 	--primary-border-radius: 1rem;
 	--secondary-border-radius: 4px;
 	--primary-border: 1px solid rgb(230, 230, 230);
-	--secondary-border: 1px solid rgb(212, 212, 212);
-	--tertiary-border: 2px solid rgb(65, 89, 228);
 	--primary-button-color: rgb(65, 89, 228);
 	--primary-button-color-hover: rgb(118, 74, 240);
 	--item-active-bg-color: rgb(226, 255, 226);
 	--item-active-text-color: green;
 	--font-family: 'Noto Sans', sans-serif;
+	--secondary-bg-color-dark: black;
 	--danger-color: red;
 }
 
@@ -34,7 +33,19 @@ h1 {
 	font-size: 1.5rem;
 }
 
+input {
+	border-radius: var(--secondary-border-radius);
+	padding-left: 0.5rem;
+	height: 2rem;
+	border: var(--primary-border);
+}
 /* PAGE STYLE */
+
+.logo {
+	font-size: 1.8rem;
+	width: 90%;
+	font-weight: 800;
+}
 
 .alert-circle::after {
 	content: '5';
@@ -53,52 +64,6 @@ h1 {
 	font-weight: 600;
 }
 
-.message-item {
-	background-color: var(--secondary-bg-color);
-	display: flex;
-	gap: 12px;
-	padding: 0 1rem;
-}
-.message-item img {
-	width: 3.5rem;
-	border: var(--secondary-border);
-	border-radius: 50%;
-	margin-bottom: 0.6rem;
-	margin-top: 0.3rem;
-}
-.message-item figcaption {
-	display: flex;
-	flex-direction: column;
-	gap: 1px;
-	border-bottom: var(--secondary-border);
-	padding: 1rem;
-	padding-top: 0.5rem;
-	padding-left: 0;
-	width: 100%;
-}
-.message-alert::after {
-	content: '1';
-	position: absolute;
-	font-size: 10px;
-	font-family: var(--font-family);
-	border-radius: 50%;
-	background-color: var(--danger-color);
-	width: 16px;
-	height: 16px;
-	color: var(--secondary-bg-color);
-	transform: translate(100%, -180%);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.message-item-content {
-	color: var(--secondary-text-color);
-}
-
-.logo {
-	font-size: 1.1rem;
-	width: 90%;
-}
 .top-navbar {
 	padding: 1rem 1.5rem;
 	display: flex;
@@ -112,14 +77,15 @@ h1 {
 .top-navbar a {
 	color: inherit;
 }
-.top-navbar-bg {
+
+.top-navbar-fixed {
 	background-color: var(--secondary-bg-color);
-	border-bottom: var(--secondary-border);
+	border-bottom: var(--primary-border);
+	justify-content: center;
 }
-.message-button {
-	background-color: var(--secondary-bg-color);
-	padding: 0.5rem 1rem;
-	border-radius: var(--secondary-border-radius);
+
+.top-navbar-fixed .logo {
+	font-size: 1rem;
 }
 
 .search-dialog {
@@ -155,42 +121,38 @@ h1 {
 	background-color: var(--item-active-bg-color);
 	color: var(--item-active-text-color);
 }
-.courses {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(200px, auto));
-	gap: 0.8rem;
-	width: 90%;
-	margin: auto;
-}
-.course-item {
-	background-color: var(--secondary-bg-color);
-	border: var(--secondary-border);
-	border-radius: var(--primary-border-radius);
-	height: fit-content;
-}
-.course-item:last-child {
-	margin-bottom: 80px;
-}
-.course-item-bg {
-	height: 150px;
-	border-top-left-radius: var(--primary-border-radius);
-	border-top-right-radius: var(--primary-border-radius);
-	background-color: var(--tertiary-bg-color);
-}
-
-.course-item ul {
-	padding: 0.5rem 1rem;
-}
-.course-item li {
-	display: flex;
-	align-items: center;
-	gap: 4px;
-}
 main {
 	margin-bottom: 3.5em;
 }
-.course-item h4 {
-	font-size: 0.8rem;
+
+.message-item {
+	background-color: var(--secondary-bg-color);
+	display: flex;
+	gap: 8px;
+	padding: 0 1rem;
+}
+.message-item:first-of-type {
+	border-top: var(--primary-border);
+}
+.message-item img {
+	width: 3.5rem;
+	border-radius: 50%;
+	margin-bottom: 0.6rem;
+	margin-top: 0.25rem;
+}
+.message-item figcaption {
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
+	border-bottom: var(--primary-border);
+	padding: 1rem;
+	padding-top: 0.5rem;
+	padding-left: 0;
+	width: 100%;
+}
+.message-item-content {
+	color: var(--secondary-text-color);
+	font-weight: 400;
 }
 
 .navbar-bottom {
@@ -222,9 +184,9 @@ main {
 
 .navbar-bottom span.nav-item-on {
 	background-color: transparent;
-	color: white;
+	color: var(--secondary-bg-color);
 	border: none;
-	background-color: black;
+	background-color: var(--secondary-bg-color-dark);
 }
 .hidden {
 	display: none;

@@ -10,7 +10,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;800;&display=swap"
 			rel="stylesheet"
 		/>
 		<link
@@ -22,19 +22,11 @@
 	<body>
 		<ul class="top-navbar">
 			<li>
-				<h1 class="logo">BRAINY</h1>
-			</li>
-			<li>
-				<span class="material-symbols-outlined" id="search-button">search</span>
+				<h1 class="logo">Brainy</h1>
 			</li>
 		</ul>
-		<form class="search-dialog hidden">
-			<input type="search" placeholder="Escribe tu búsqueda" data-search-type />
-			<span class="material-symbols-outlined" id="filter-button"> tune </span>
-			<div class="filter-dialog hidden">
-				<span class="filter-dialog-active">Subject</span>
-				<span>Teacher</span>
-			</div>
+		<form class="search-dialog">
+			<input type="search" placeholder="Search a course" data-search-type />
 		</form>
 		<main class="courses">
 			<a class="course-item" href="course.html">

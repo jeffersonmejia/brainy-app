@@ -34,8 +34,9 @@ input {
 /* PAGE STYLE */
 
 .logo {
-	font-size: 1.1rem;
+	font-size: 1.8rem;
 	width: 90%;
+	font-weight: 800;
 }
 
 .top-navbar {
@@ -55,16 +56,20 @@ input {
 	color: inherit;
 }
 
-.top-navbar-bg {
+.top-navbar-fixed {
 	background-color: var(--secondary-bg-color);
 	border-bottom: var(--primary-border);
+	justify-content: center;
+}
+.top-navbar-fixed .logo {
+	font-size: 1rem;
 }
 
 .search-dialog {
 	width: 90%;
 	margin: auto;
 	border: none;
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
 	display: flex;
 	align-items: center;
 	gap: 1rem;
