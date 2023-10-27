@@ -46,7 +46,13 @@ input {
 	width: 90%;
 	font-weight: 800;
 }
-
+.primary-button {
+	border: none;
+	background-color: var(--primary-button-color);
+	height: 30px;
+	border-radius: var(--secondary-border-radius);
+	color: var(--secondary-bg-color);
+}
 .alert-circle::after {
 	content: '5';
 	position: absolute;
@@ -123,22 +129,35 @@ main {
 }
 
 .activity-item {
-	list-style: none;
-	background-color: var(--secondary-bg-color);
-	border-radius: var(--secondary-border-radius);
-	padding: 1rem;
+	padding: 1rem 0.8rem;
 	display: flex;
-	flex-direction: column;
-	gap: 4px;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	background-color: var(--secondary-bg-color);
+	border: var(--primary-border);
+	border-bottom-right-radius: var(--primary-border-radius);
+	border-bottom-left-radius: var(--primary-border-radius);
+}
+.activity-item li {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 2px;
+	width: 100%;
+	background-color: var(--primary-bg-color);
+	padding: 4px 8px;
+	border-radius: var(--primary-border-radius);
+	border: var(--primary-border);
 }
 .activity-item span {
 	font-size: 1.2rem;
+	color: gray;
 }
 .activity-item :is(h4, h5) {
 	font-size: 0.8rem;
-}
-.activity-item h5 {
 	font-weight: 400;
+	color: gray;
 }
 .activity-item li {
 	display: flex;
@@ -146,6 +165,10 @@ main {
 	gap: 4px;
 }
 
+.activities .primary-button {
+	margin-left: auto;
+	width: 90px;
+}
 .navbar-bottom {
 	padding: 0.5rem 1rem;
 	border-top: var(--primary-border);
