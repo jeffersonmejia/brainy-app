@@ -29,9 +29,6 @@ html {
 	background-color: var(--primary-bg-color);
 	font-family: 'Noto Sans', sans-serif;
 }
-h1 {
-	font-size: 1.5rem;
-}
 
 input {
 	border-radius: var(--secondary-border-radius);
