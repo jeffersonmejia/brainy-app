@@ -26,22 +26,15 @@
 		<link rel="stylesheet" href="styles/account.css" />
 	</head>
 	<body>
-		<ul class="top-navbar-mobile">
+		<ul class="top-navbar">
 			<li>
-				<h1 class="logo">BRAINY</h1>
+				<h1 class="logo">Brainy</h1>
 			</li>
 			<li class="hidden">
 				<span class="material-symbols-outlined" id="search-button">search</span>
 			</li>
 		</ul>
-		<form class="search-dialog hidden">
-			<input type="search" placeholder="Escribe tu búsqueda" data-search-type />
-			<span class="material-symbols-outlined" id="filter-button"> tune </span>
-			<div class="filter-dialog hidden">
-				<span class="filter-item-active">Subject</span>
-				<span>Teacher</span>
-			</div>
-		</form>
+
 		<main>
 			<ul class="account-items">
 				<li>
@@ -56,8 +49,8 @@
 				</li>
 			</ul>
 		</main>
-		<nav class="bottom-navbar-mobile">
-			<ul class="nav-items">
+		<nav class="navbar-bottom">
+			<ul>
 				<li>
 					<a href="home.html">
 						<span class="material-symbols-outlined"> home </span>
@@ -65,7 +58,7 @@
 				</li>
 				<li>
 					<a href="messages.html">
-						<span class="material-symbols-outlined message-alert">
+						<span class="material-symbols-outlined alert-circle">
 							message
 						</span>
 					</a>
@@ -73,19 +66,22 @@
 
 				<li>
 					<a href="tasks.html">
-						<span class="material-symbols-outlined"> checklist </span>
+						<span class="material-symbols-outlined alert-circle">
+							checklist
+						</span>
 					</a>
 				</li>
 				<li>
-					<a href="grades.html">
-						<span class="material-symbols-outlined"> bar_chart </span>
+					<a href="notifications.html">
+						<span class="material-symbols-outlined alert-circle nav-item-on">
+							notifications
+						</span>
 					</a>
 				</li>
-
 				<li>
-					<span class="material-symbols-outlined nav-item-on"
-						>account_circle
-					</span>
+					<a href="account.html">
+						<span class="material-symbols-outlined">account_circle </span>
+					</a>
 				</li>
 			</ul>
 		</nav>
