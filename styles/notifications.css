@@ -86,7 +86,7 @@ input {
 }
 
 .search-dialog {
-	width: 90%;
+	padding: 0 1.5rem;
 	margin: auto;
 	border: none;
 	margin-bottom: 1rem;
@@ -133,6 +133,7 @@ main {
 }
 .message-item img {
 	width: 3.5rem;
+	height: 3.5rem;
 	border-radius: 50%;
 	margin-bottom: 0.6rem;
 	margin-top: 0.25rem;

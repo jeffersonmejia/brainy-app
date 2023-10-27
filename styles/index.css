@@ -3,7 +3,7 @@
 	--secondary-bg-color: rgb(255, 255, 255);
 	--secondary-text-color: rgb(90, 90, 90);
 	--secondary-border-radius: 4px;
-	--primary-border: 1px solid rgb(180, 180, 180);
+	--primary-border: 1px solid rgb(230, 230, 230);
 	--primary-button-color: rgb(65, 89, 228);
 	--primary-button-color-hover: rgb(118, 74, 240);
 	--primary-font-family: 'Noto Sans', sans-serif;
@@ -19,6 +19,7 @@ html {
 }
 h1 {
 	font-size: 1.5rem;
+	font-weight: 800;
 }
 
 .primary-button {
@@ -76,13 +77,15 @@ fieldset {
 	width: 100px;
 	margin-left: auto;
 }
-.group-forget {
+.group-button {
 	list-style-type: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	margin-top: 0.5rem;
 }
-.group-forget li {
-	font-size: small;
-	color: var(--secondary-text-color);
+.group-button small {
+	color: rgb(140, 140, 140);
 }
 
 footer {
@@ -91,7 +94,6 @@ footer {
 	align-items: center;
 	justify-content: space-between;
 	padding: 2rem;
-	gap: 4px;
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -101,7 +103,7 @@ footer {
 footer a {
 	text-decoration: none;
 	color: var(--text-color-gray);
-	font-size: 0.8rem;
+	font-size: 0.7rem;
 }
 footer a:hover {
 	text-decoration: underline;

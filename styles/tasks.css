@@ -95,10 +95,10 @@ input {
 }
 
 .search-dialog {
-	width: 90%;
+	padding: 0 1.5rem;
 	margin: auto;
 	border: none;
-	margin-bottom: 1rem;
+	margin-bottom: 0.3rem;
 	display: flex;
 	align-items: center;
 	gap: 1rem;
@@ -107,6 +107,34 @@ input {
 .search-dialog input {
 	width: 100%;
 	background-color: var(--secondary-bg-color);
+}
+
+.filter-options {
+	list-style: none;
+	padding: 0 1.5rem;
+	display: flex;
+	gap: 12px;
+	margin-bottom: 1rem;
+}
+.filter-options li {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2px;
+	width: 100%;
+	background-color: var(--secondary-bg-color);
+	padding: 4px 8px;
+	border-radius: var(--primary-border-radius);
+	border: var(--primary-border);
+}
+.filter-options span {
+	font-size: 1rem;
+}
+.filter-options small {
+	font-size: 0.7rem;
+}
+.filter-options :is(span, small) {
+	color: gray;
 }
 
 main {
@@ -130,14 +158,14 @@ main {
 
 .activity-item {
 	padding: 1rem 0.8rem;
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
 	align-items: center;
 	justify-content: space-between;
 	gap: 12px;
 	background-color: var(--secondary-bg-color);
 	border: var(--primary-border);
-	border-bottom-right-radius: var(--primary-border-radius);
-	border-bottom-left-radius: var(--primary-border-radius);
+	border-radius: var(--secondary-border-radius);
 }
 .activity-item li {
 	display: flex;
@@ -150,13 +178,37 @@ main {
 	border-radius: var(--primary-border-radius);
 	border: var(--primary-border);
 }
+.activity-item .activity-item-description {
+	grid-column: 1/-1;
+	border: none;
+	background-color: transparent;
+	text-align: justify;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.activity-item-description a {
+	color: var(--primary-button-color);
+}
 .activity-item span {
-	font-size: 1.2rem;
+	font-size: 1rem;
 	color: gray;
 }
-.activity-item :is(h4, h5) {
+
+.activity-item h5 {
+	font-size: 0.7rem;
+}
+.activity-item p {
 	font-size: 0.8rem;
+}
+.activity-item h4 {
+	font-size: 0.8rem;
+}
+.activity-item :is(h5, span) {
 	font-weight: 400;
+}
+.activity-item :is(p, span, h5) {
 	color: gray;
 }
 .activity-item li {
@@ -165,7 +217,7 @@ main {
 	gap: 4px;
 }
 
-.activities .primary-button {
+.pagination-button {
 	margin-left: auto;
 	width: 90px;
 }

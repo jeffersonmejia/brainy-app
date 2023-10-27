@@ -7,12 +7,13 @@
 	--secondary-text-color: rgb(125, 125, 125);
 	--primary-border-radius: 1rem;
 	--secondary-border-radius: 4px;
-	--primary-border: 1px solid rgb(180, 180, 180);
+	--primary-border: 1px solid rgb(230, 230, 230);
 	--secondary-border: 1px solid rgb(212, 212, 212);
 	--tertiary-border: 2px solid rgb(65, 89, 228);
 	--primary-button-color: rgb(65, 89, 228);
 	--primary-button-color-hover: rgb(118, 74, 240);
 	--item-active-bg-color: rgb(226, 255, 226);
+	--secondary-bg-color-dark: black;
 	--item-active-text-color: green;
 	--font-family: 'Noto Sans', sans-serif;
 	--danger-color: red;
@@ -79,6 +80,9 @@ main {
 }
 .account-items li:last-child {
 	padding: 0;
+}
+.account-items li {
+	border: var(--primary-border);
 }
 .account-items a {
 	padding: 1rem;
