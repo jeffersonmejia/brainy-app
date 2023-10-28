@@ -15,6 +15,8 @@
 	--item-active-text-color: green;
 	--font-family: 'Noto Sans', sans-serif;
 	--secondary-bg-color-dark: black;
+	--primary-highlight-bg: rgb(176, 252, 176);
+	--primary-highlight-text: green;
 	--danger-color: red;
 }
 
@@ -59,6 +61,12 @@ input {
 	justify-content: center;
 	font-family: 'Courier New', Courier, monospace;
 	font-weight: 600;
+}
+
+.highlight-text {
+	background-color: var(--primary-highlight-bg);
+	color: var(primary-highlight-text);
+	border-radius: var(--secondary-border-radius);
 }
 
 .top-navbar {
@@ -117,6 +125,24 @@ input {
 .filter-dialog .filter-item-active {
 	background-color: var(--item-active-bg-color);
 	color: var(--item-active-text-color);
+}
+
+.search-not-found {
+	padding: 0 1.5rem;
+	color: var(--secondary-text-color);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 5rem;
+	gap: 0.5rem;
+}
+
+.search-not-found img {
+	width: 50px;
+}
+
+.search-not-found h4 {
+	font-size: 0.8rem;
 }
 main {
 	margin-bottom: 3.5em;
