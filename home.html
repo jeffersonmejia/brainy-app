@@ -32,8 +32,19 @@
 			</li>
 		</ul>
 		<form class="search-dialog">
-			<input type="search" placeholder="Search a course" data-search-type />
+			<input
+				type="search"
+				placeholder="Search a course"
+				data-search-type
+				autofocus
+			/>
 		</form>
+		<figure class="search-not-found hidden">
+			<img src="assets/icons/not-found.png" alt="" />
+			<figcaption>
+				<h4>Not matches found!</h4>
+			</figcaption>
+		</figure>
 		<main class="courses">
 			<a class="course-item" href="course.html">
 				<figure>
