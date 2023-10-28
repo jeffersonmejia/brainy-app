@@ -36,27 +36,42 @@
 		</ul>
 		<form class="search-dialog">
 			<input type="search" placeholder="Search an activity" />
+			<span class="material-symbols-outlined search-sort button"
+				>filter_list
+			</span>
 		</form>
 		<ul class="filter-options">
-			<li>
-				<span class="material-symbols-outlined"> subject </span>
-				<small>Subject</small>
+			<li id="task-filter" class="button" data-filter="task">
+				<span class="material-symbols-outlined" data-filter="task">
+					description
+				</span>
+				<small data-filter="task">Task</small>
 			</li>
-			<li>
-				<span class="material-symbols-outlined"> description </span>
-				<small>Task</small>
+			<li id="lesson-filter" class="button" data-filter="lesson">
+				<span class="material-symbols-outlined" data-filter="lesson">
+					description
+				</span>
+				<small data-filter="lesson">Lesson</small>
 			</li>
-			<li>
-				<span class="material-symbols-outlined"> description </span>
-				<small>Lesson</small>
+			<li id="exam-filter" class="button" data-filter="exam">
+				<span class="material-symbols-outlined" data-filter="exam">
+					description
+				</span>
+				<small data-filter="exam">Exam</small>
 			</li>
-			<li>
-				<span class="material-symbols-outlined"> description </span>
-				<small>Exam</small>
+			<li id="reset-filter" class="button">
+				<span class="material-symbols-outlined"> filter_alt_off </span>
+				<small>Reset</small>
 			</li>
 		</ul>
 		<main>
 			<section class="activities">
+				<figure class="search-not-found hidden">
+					<img src="assets/icons/not-found.png" alt="" />
+					<figcaption>
+						<h4>Not matches found!</h4>
+					</figcaption>
+				</figure>
 				<ul class="activity-item">
 					<li>
 						<span class="material-symbols-outlined"> subject </span>
@@ -64,7 +79,7 @@
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> description </span>
-						<h5>Task</h5>
+						<h5 class="activity-item-category">Task</h5>
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> timer </span>
@@ -86,7 +101,7 @@
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> description </span>
-						<h5>Lesson</h5>
+						<h5 class="activity-item-category">Lesson</h5>
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> timer </span>
@@ -109,7 +124,7 @@
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> description </span>
-						<h5>Task</h5>
+						<h5 class="activity-item-category">Task</h5>
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> timer </span>
@@ -132,7 +147,7 @@
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> description </span>
-						<h5>Lesson</h5>
+						<h5 class="activity-item-category">Exam</h5>
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> timer </span>
@@ -155,7 +170,7 @@
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> description </span>
-						<h5>Task</h5>
+						<h5 class="activity-item-category">Task</h5>
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> timer </span>
@@ -171,7 +186,6 @@
 					</li>
 				</ul>
 
-				<!-- Course 5: Math -->
 				<ul class="activity-item">
 					<li>
 						<span class="material-symbols-outlined"> subject </span>
@@ -179,13 +193,14 @@
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> description </span>
-						<h5>N° 1</h5>
+						<h5 class="activity-item-category">Task</h5>
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> timer </span>
 						<h5>20h</h5>
 					</li>
 					<li class="activity-item-description">
+						<h4>Vectorial exercises</h4>
 						<p>
 							Dive into the basics of calculus, covering limits, derivatives,
 							and integrals.
@@ -201,7 +216,7 @@
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> description </span>
-						<h5>Task</h5>
+						<h5 class="activity-item-category">Task</h5>
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> timer </span>
@@ -224,13 +239,14 @@
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> description </span>
-						<h5>Lesson</h5>
+						<h5 class="activity-item-category">Lesson</h5>
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> timer </span>
 						<h5>2d</h5>
 					</li>
 					<li class="activity-item-description">
+						<h4>Vectorial exercises</h4>
 						<p>
 							Introduction to basic concepts in linear algebra, including
 							matrices and vectors.
@@ -239,7 +255,6 @@
 					</li>
 				</ul>
 
-				<!-- Course 8: Programming -->
 				<ul class="activity-item">
 					<li>
 						<span class="material-symbols-outlined"> subject </span>
@@ -247,7 +262,7 @@
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> description </span>
-						<h5>Lesson</h5>
+						<h5 class="activity-item-category">Lesson</h5>
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> timer </span>
@@ -263,7 +278,6 @@
 					</li>
 				</ul>
 
-				<!-- Course 9: Math -->
 				<ul class="activity-item">
 					<li>
 						<span class="material-symbols-outlined"> subject </span>
@@ -271,7 +285,7 @@
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> description </span>
-						<h5>Test</h5>
+						<h5 class="activity-item-category">Lesson</h5>
 					</li>
 					<li>
 						<span class="material-symbols-outlined"> timer </span>
@@ -287,7 +301,9 @@
 					</li>
 				</ul>
 
-				<button class="primary-button pagination-button">Next week</button>
+				<button class="primary-button pagination-button button">
+					Next week
+				</button>
 			</section>
 		</main>
 		<nav class="navbar-bottom">
