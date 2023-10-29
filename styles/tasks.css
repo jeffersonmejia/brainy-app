@@ -19,6 +19,7 @@
 	--secondary-bg-color-dark: black;
 	--primary-highlight-bg: rgb(176, 252, 176);
 	--primary-highlight-text: green;
+	--primary-highlight-border: 1px solid rgb(145, 231, 145);
 	--danger-color: red;
 }
 
@@ -146,12 +147,14 @@ input {
 .filter-options small {
 	font-size: 0.7rem;
 }
+
 .filter-options :is(span, small) {
 	color: gray;
 }
 
 .filter-options .filter-option-on {
 	background-color: var(--primary-highlight-bg);
+	border: var(--primary-highlight-border);
 }
 
 .filter-option-on :is(span, small) {
@@ -167,7 +170,17 @@ input {
 	margin-top: 5rem;
 	gap: 0.5rem;
 }
-
+.filter-options-on .highlight-counter {
+	font-size: 10px;
+	width: 16px;
+	height: 16px;
+	background-color: var(--primary-highlight-text);
+	color: var(--primary-highlight-bg);
+	position: absolute;
+	transform: translate(220%, -40%);
+	text-align: center;
+	border-radius: 50%;
+}
 .search-not-found img {
 	width: 50px;
 }
@@ -257,6 +270,7 @@ main {
 }
 .activity-item .filter-option-on {
 	background-color: var(--primary-highlight-bg);
+	border: var(--primary-highlight-border);
 }
 .activity-item .filter-option-on :is(h5, span) {
 	color: var(--primary-highlight-text);

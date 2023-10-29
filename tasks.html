@@ -35,29 +35,36 @@
 			</li>
 		</ul>
 		<form class="search-dialog">
-			<input type="search" placeholder="Search an activity" />
+			<input type="search" placeholder="Search an activity" autofocus />
 			<span class="material-symbols-outlined search-sort button" data-sort="off"
 				>filter_list
 			</span>
 		</form>
 		<ul class="filter-options">
-			<li id="task-filter" class="button" data-filter="task">
+			<li id="task-filter" class="filter-option-item button" data-filter="task">
 				<span class="material-symbols-outlined" data-filter="task">
 					description
 				</span>
 				<small data-filter="task">Task</small>
+				<small class="filter-counter highlight-counter hidden"></small>
 			</li>
-			<li id="lesson-filter" class="button" data-filter="lesson">
+			<li
+				id="lesson-filter"
+				class="filter-option-item button"
+				data-filter="lesson"
+			>
 				<span class="material-symbols-outlined" data-filter="lesson">
 					description
 				</span>
 				<small data-filter="lesson">Lesson</small>
+				<small class="filter-counter highlight-counter hidden"></small>
 			</li>
-			<li id="exam-filter" class="button" data-filter="exam">
+			<li id="exam-filter" class="filter-option-item button" data-filter="exam">
 				<span class="material-symbols-outlined" data-filter="exam">
 					description
 				</span>
 				<small data-filter="exam">Exam</small>
+				<small class="filter-counter highlight-counter hidden"></small>
 			</li>
 			<li id="reset-filter" class="button">
 				<span class="material-symbols-outlined"> filter_alt_off </span>

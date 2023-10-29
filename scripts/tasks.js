@@ -6,27 +6,38 @@ const d = document,
 	$paginationButton = d.querySelector('.pagination-button'),
 	$searchSort = d.querySelector('.search-sort button')
 
-let isTasksSorted = false
-
 function searchItem(search) {
 	search = search.toUpperCase()
 	filterQuery($activities, search)
 }
 
 function filterByCategory(filter) {
-	const old = d.querySelector('.filter-option-on')
-	let name = filter.dataset.filter
-	name = name.toUpperCase()
-	if (old) {
-		old.classList.remove('filter-option-on')
-	}
-	if (filter.id.includes('filter')) {
+	const $old = d.querySelector('.filter-option-on'),
+		$oldCounter = $old?.querySelector('.filter-counter'),
+		name = filter.dataset.filter.toUpperCase(),
+		isParent = filter.id.includes('filter')
+
+	let counter = 0,
+		$counter = null
+
+	$old?.classList.remove('filter-option-on')
+	$oldCounter?.classList.add('hidden')
+	if (isParent) {
 		filter.classList.add('filter-option-on')
+		$counter = filter.querySelector('.filter-counter')
 	} else {
 		const parent = filter.parentElement
+		$counter = parent.querySelector('.filter-counter')
 		parent.classList.add('filter-option-on')
 	}
 
+	counter = countCategories(name)
+	$counter.innerText = `(${counter})`
+	$counter.classList.remove('hidden')
+}
+
+function countCategories(name) {
+	let counter = 0
 	$activities.forEach(($activity) => {
 		const $category = $activity.querySelector('.activity-item-category'),
 			category = $category.innerText.toUpperCase(),
@@ -37,9 +48,11 @@ function filterByCategory(filter) {
 			categoryButton.classList.remove('filter-option-on')
 		} else {
 			$activity.classList.remove('hidden')
+			counter++
 		}
 		categoryButton.classList.add('filter-option-on')
 	})
+	return counter
 }
 
 function filterQuery(set, query) {
@@ -78,6 +91,8 @@ function filterQuery(set, query) {
 function resetFilter() {
 	const filtered = d.querySelectorAll('.filter-option-on')
 	filtered.forEach((el) => {
+		const $counter = el.querySelector('.filter-counter')
+		$counter?.classList.add('hidden')
 		el.classList.remove('filter-option-on')
 	})
 	$activities.forEach((el) => {
@@ -85,14 +100,15 @@ function resetFilter() {
 	})
 }
 
-function sortItemsToCache(state, sortFilter) {
+function sortItems(sortFilter) {
+	const state = sortFilter.dataset.sort
 	if (state === 'off') {
 		const sorted = [],
 			$fragment = d.createDocumentFragment()
 
 		$activities.forEach(($activity) => {
-			const $name = $activity.querySelector('h5')
-			const $clone = $activity.cloneNode(true)
+			const $name = $activity.querySelector('h5'),
+				$clone = $activity.cloneNode(true)
 			sorted.push({ name: $name.innerText, el: $clone })
 			$activity.classList.add('hidden')
 			$activity.setAttribute('data-reset', '')
@@ -107,34 +123,21 @@ function sortItemsToCache(state, sortFilter) {
 		$activitiesParent.insertBefore($fragment, $paginationButton)
 		sortFilter.innerText = 'filter_list_off'
 		sortFilter.setAttribute('data-sort', 'on')
-		isTasksSorted = true
-	}
-}
-
-function sortItemsByCache(state, sortFilter) {
-	const $sorted = $activitiesParent.querySelectorAll('[data-sorted]'),
-		$unsorted = $activitiesParent.querySelectorAll('[data-reset]')
-	$unsorted.forEach((unsorted) => {
-		unsorted.classList.toggle('hidden')
-	})
-	$sorted.forEach((sorted) => {
-		sorted.classList.toggle('hidden')
-	})
-	if (state === 'off') {
-		sortFilter.setAttribute('data-sort', 'on')
-		sortFilter.innerText = 'filter_list_off'
 	} else {
+		const $sorted = $activitiesParent.querySelectorAll('[data-sorted]'),
+			$unsorted = $activitiesParent.querySelectorAll('[data-reset]')
+		$sorted.forEach((sorted) => {
+			$activitiesParent.removeChild(sorted)
+		})
+		$unsorted.forEach((unsorted) => {
+			const category = unsorted.querySelector('.filter-option-on')
+			if (!category) {
+				unsorted.classList.toggle('hidden')
+			}
+		})
+
 		sortFilter.innerText = 'filter_list'
 		sortFilter.setAttribute('data-sort', 'off')
-	}
-}
-
-function sortItems(sortFilter) {
-	const state = sortFilter.dataset.sort
-	if (isTasksSorted) {
-		sortItemsByCache(state, sortFilter)
-	} else {
-		sortItemsToCache(state, sortFilter)
 	}
 }
 
@@ -176,10 +179,8 @@ d.addEventListener('click', (e) => {
 	if (e.target.closest('#reset-filter')) {
 		resetFilter()
 	}
-	if (e.target.closest('.filter-options li')) {
-		if (e.target.id !== 'reset-filter') {
-			filterByCategory(e.target)
-		}
+	if (e.target.closest('.filter-option-item')) {
+		filterByCategory(e.target)
 	}
 	if (e.target.matches('.search-sort ')) {
 		sortItems(e.target)
