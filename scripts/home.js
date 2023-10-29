@@ -14,8 +14,10 @@ function searchItem(search) {
 			$currentCourse = $list.parentElement,
 			parent = $currentCourse.parentElement
 		let name = course.textContent
-		name = name.split(' ')[0]
+		name = name.split('(')[0]
 		name = name.toUpperCase()
+		console.log(name, search)
+		console.log(name.includes(search))
 		if (!name.includes(search)) {
 			parent.classList.add('hidden')
 			hiddenCounter++
