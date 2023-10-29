@@ -57,6 +57,9 @@ input {
 }
 .button {
 	cursor: pointer;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
 }
 .alert-circle::after {
 	content: '5';

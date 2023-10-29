@@ -1,8 +1,12 @@
 const d = document,
 	$topNavbar = d.querySelector('.top-navbar'),
 	$activities = d.querySelectorAll('.activity-item'),
+	$activitiesParent = d.querySelector('.activities'),
 	$searchNotFound = d.querySelector('.search-not-found'),
-	$paginationButton = d.querySelector('.pagination-button')
+	$paginationButton = d.querySelector('.pagination-button'),
+	$searchSort = d.querySelector('.search-sort button')
+
+let isTasksSorted = false
 
 function searchItem(search) {
 	search = search.toUpperCase()
@@ -13,7 +17,6 @@ function filterByCategory(filter) {
 	const old = d.querySelector('.filter-option-on')
 	let name = filter.dataset.filter
 	name = name.toUpperCase()
-	console.log(old)
 	if (old) {
 		old.classList.remove('filter-option-on')
 	}
@@ -82,6 +85,59 @@ function resetFilter() {
 	})
 }
 
+function sortItemsToCache(state, sortFilter) {
+	if (state === 'off') {
+		const sorted = [],
+			$fragment = d.createDocumentFragment()
+
+		$activities.forEach(($activity) => {
+			const $name = $activity.querySelector('h5')
+			const $clone = $activity.cloneNode(true)
+			sorted.push({ name: $name.innerText, el: $clone })
+			$activity.classList.add('hidden')
+			$activity.setAttribute('data-reset', '')
+		})
+		sorted.sort((a, b) => {
+			return a.name.localeCompare(b.name)
+		})
+		sorted.forEach((activity) => {
+			activity.el.setAttribute('data-sorted', '')
+			$fragment.appendChild(activity.el)
+		})
+		$activitiesParent.insertBefore($fragment, $paginationButton)
+		sortFilter.innerText = 'filter_list_off'
+		sortFilter.setAttribute('data-sort', 'on')
+		isTasksSorted = true
+	}
+}
+
+function sortItemsByCache(state, sortFilter) {
+	const $sorted = $activitiesParent.querySelectorAll('[data-sorted]'),
+		$unsorted = $activitiesParent.querySelectorAll('[data-reset]')
+	$unsorted.forEach((unsorted) => {
+		unsorted.classList.toggle('hidden')
+	})
+	$sorted.forEach((sorted) => {
+		sorted.classList.toggle('hidden')
+	})
+	if (state === 'off') {
+		sortFilter.setAttribute('data-sort', 'on')
+		sortFilter.innerText = 'filter_list_off'
+	} else {
+		sortFilter.innerText = 'filter_list'
+		sortFilter.setAttribute('data-sort', 'off')
+	}
+}
+
+function sortItems(sortFilter) {
+	const state = sortFilter.dataset.sort
+	if (isTasksSorted) {
+		sortItemsByCache(state, sortFilter)
+	} else {
+		sortItemsToCache(state, sortFilter)
+	}
+}
+
 function highlightText(text, el) {
 	const old = el.querySelectorAll('.highlight-text')
 	old.forEach((oldElement) => {
@@ -124,6 +180,9 @@ d.addEventListener('click', (e) => {
 		if (e.target.id !== 'reset-filter') {
 			filterByCategory(e.target)
 		}
+	}
+	if (e.target.matches('.search-sort ')) {
+		sortItems(e.target)
 	}
 })
 
