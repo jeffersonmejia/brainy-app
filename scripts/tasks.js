@@ -4,15 +4,21 @@ const d = document,
 	$activitiesParent = d.querySelector('.activities'),
 	$searchNotFound = d.querySelector('.search-not-found'),
 	$paginationButton = d.querySelector('.pagination-button'),
+	$search = d.querySelector('.search-dialog input'),
 	$searchSort = d.querySelector('.search-sort button')
+
+let isClassified = false,
+	classifiedCounter = 0
 
 function searchItem(search) {
 	search = search.toUpperCase()
+
 	filterQuery($activities, search)
 }
 
 function filterByCategory(filter) {
 	const $old = d.querySelector('.filter-option-on'),
+		$oldItems = d.querySelectorAll('.activities .filter-option-on'),
 		$oldCounter = $old?.querySelector('.filter-counter'),
 		name = filter.dataset.filter.toUpperCase(),
 		isParent = filter.id.includes('filter')
@@ -22,6 +28,9 @@ function filterByCategory(filter) {
 
 	$old?.classList.remove('filter-option-on')
 	$oldCounter?.classList.add('hidden')
+	$oldItems.forEach((el) => {
+		el.classList.remove('filter-option-on')
+	})
 	if (isParent) {
 		filter.classList.add('filter-option-on')
 		$counter = filter.querySelector('.filter-counter')
@@ -32,8 +41,13 @@ function filterByCategory(filter) {
 	}
 
 	counter = countCategories(name)
+	classifiedCounter = counter
 	$counter.innerText = `(${counter})`
 	$counter.classList.remove('hidden')
+	isClassified = true
+	if ($search.value.length > 0) {
+		searchItem($search.value)
+	}
 }
 
 function countCategories(name) {
@@ -47,39 +61,72 @@ function countCategories(name) {
 			$activity.classList.add('hidden')
 			categoryButton.classList.remove('filter-option-on')
 		} else {
+			categoryButton.classList.add('filter-option-on')
 			$activity.classList.remove('hidden')
 			counter++
 		}
-		categoryButton.classList.add('filter-option-on')
 	})
 	return counter
 }
 
 function filterQuery(set, query) {
-	let hiddenCounter = 0
+	let hiddenCounter = 0,
+		isEmptyQuery = query.length > 0
+
 	set.forEach((node) => {
 		const $title = node.querySelector('h4'),
 			$content = node.querySelector('p'),
 			title = $title.innerText.toUpperCase(),
-			content = $content.innerText.toUpperCase()
+			content = $content.innerText.toUpperCase(),
+			isFound = title.includes(query) || content.includes(query)
 
-		if (!title.includes(query) || !content.includes(query)) {
-			node.classList.add('hidden')
-			hiddenCounter++
-		}
-		if (title.includes(query) || content.includes(query)) {
-			node.classList.remove('hidden')
-			hiddenCounter--
-			if (query.length > 0) {
-				highlightText(query, $title)
-				highlightText(query, $content)
-			} else {
-				removeHighlightText($title)
-				removeHighlightText($content)
+		if (isClassified) {
+			const $category = node?.querySelector('.filter-option-on'),
+				$parent = $category?.parentElement
+			if ($parent) {
+				if (!isFound) {
+					$parent.classList.add('hidden')
+					hiddenCounter++
+				}
+				if (isFound) {
+					$parent.classList.remove('hidden')
+					if (isEmptyQuery) {
+						highlightText(query, $title)
+						highlightText(query, $content)
+					} else {
+						removeHighlightText($title)
+						removeHighlightText($content)
+					}
+					hiddenCounter--
+				}
+			}
+		} else {
+			if (!isFound) {
+				node.classList.add('hidden')
+				hiddenCounter++
+			}
+			if (isFound) {
+				node.classList.remove('hidden')
+				if (isEmptyQuery) {
+					highlightText(query, $title)
+					highlightText(query, $content)
+				} else {
+					removeHighlightText($title)
+					removeHighlightText($content)
+				}
+				hiddenCounter--
 			}
 		}
 	})
-	if (hiddenCounter === set.length) {
+	if (isClassified) {
+		toggleNotFound(hiddenCounter, classifiedCounter)
+	} else {
+		toggleNotFound(hiddenCounter, set.length)
+	}
+}
+
+function toggleNotFound(counter, setSize) {
+	if (counter === setSize) {
 		$searchNotFound.classList.remove('hidden')
 		$paginationButton.classList.add('hidden')
 	} else {
@@ -98,15 +145,20 @@ function resetFilter() {
 	$activities.forEach((el) => {
 		el.classList.remove('hidden')
 	})
+	isClassified = false
+	$search.value = ''
+	searchItem($search.value)
+	classifiedCounter = 0
 }
 
 function sortItems(sortFilter) {
-	const state = sortFilter.dataset.sort
+	const state = sortFilter.dataset.sort,
+		$copyOfActivities = d.querySelectorAll('.activity-item:not(.hidden)')
 	if (state === 'off') {
 		const sorted = [],
 			$fragment = d.createDocumentFragment()
 
-		$activities.forEach(($activity) => {
+		$copyOfActivities.forEach(($activity) => {
 			const $name = $activity.querySelector('h5'),
 				$clone = $activity.cloneNode(true)
 			sorted.push({ name: $name.innerText, el: $clone })
@@ -130,9 +182,11 @@ function sortItems(sortFilter) {
 			$activitiesParent.removeChild(sorted)
 		})
 		$unsorted.forEach((unsorted) => {
-			const category = unsorted.querySelector('.filter-option-on')
-			if (!category) {
-				unsorted.classList.toggle('hidden')
+			const $classified = unsorted?.querySelector('.filter-option-on')
+			if (isClassified) {
+				$classified?.parentElement.classList.remove('hidden')
+			} else {
+				unsorted.classList.remove('hidden')
 			}
 		})
 
