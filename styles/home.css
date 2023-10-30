@@ -11,6 +11,9 @@
 	--item-active-bg-color: rgb(226, 255, 226);
 	--item-active-text-color: green;
 	--secondary-bg-color-dark: black;
+	--primary-highlight-bg: rgb(176, 252, 176);
+	--primary-highlight-text: green;
+	--primary-highlight-border: 1px solid rgb(145, 231, 145);
 	--primary-font-family: 'Noto Sans', sans-serif;
 	--danger-color: red;
 }
@@ -141,6 +144,7 @@ input {
 	gap: 0.8rem;
 	padding: 0 1.5rem;
 	margin: auto;
+	margin-bottom: 5rem;
 }
 .course-item {
 	background-color: var(--secondary-bg-color);
@@ -150,9 +154,7 @@ input {
 	color: inherit;
 	border: var(--primary-border);
 }
-.course-item:last-child {
-	margin-bottom: 80px;
-}
+
 .course-item-bg {
 	height: 160px;
 	width: 100%;
@@ -197,6 +199,15 @@ input {
 .course-item :is(span, h4) {
 	font-weight: 400;
 	color: gray;
+}
+
+.course-item .filter-option-on {
+	background-color: var(--primary-highlight-bg);
+	border: var(--primary-highlight-border);
+}
+
+.course-item .filter-option-on :is(span, h4) {
+	color: var(--primary-highlight-text);
 }
 
 .navbar-bottom {

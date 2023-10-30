@@ -1,32 +1,39 @@
 const d = document,
 	$search = d.querySelector('.search-dialog'),
 	$searchContent = d.querySelector('.search-dialog input'),
-	$coursesName = d.querySelectorAll('.course-item-name'),
+	$courses = d.querySelectorAll('.course-item'),
 	$topNavbar = d.querySelector('.top-navbar'),
 	$searchNotFound = d.querySelector('.search-not-found')
 
 function searchItem(search) {
-	let hiddenCounter = 0
+	let hiddenCounter = 0,
+		isEmptyQuery = search.length === 0
+
 	search = search.toUpperCase()
-	$coursesName.forEach((course) => {
-		const $listItem = course.parentElement,
-			$list = $listItem.parentElement,
-			$currentCourse = $list.parentElement,
-			parent = $currentCourse.parentElement
-		let name = course.textContent
-		name = name.split('(')[0]
-		name = name.toUpperCase()
-		console.log(name, search)
-		console.log(name.includes(search))
-		if (!name.includes(search)) {
-			parent.classList.add('hidden')
-			hiddenCounter++
-		} else {
-			parent.classList.remove('hidden')
+	$courses.forEach(($course) => {
+		const $courseName = $course.querySelector('.course-item-name'),
+			$courseNameHighliht = $courseName.parentElement,
+			courseName = $courseName.innerText.toUpperCase(),
+			courseNameSplit = courseName.split('(')[0],
+			isFound = courseNameSplit.includes(search)
+
+		if (isEmptyQuery) {
+			$courseNameHighliht.classList.remove('filter-option-on')
+		}
+		if (isFound) {
+			$course.classList.remove('hidden')
+
+			if (!isEmptyQuery) {
+				$courseNameHighliht.classList.add('filter-option-on')
+			}
 			hiddenCounter--
+		} else {
+			$course.classList.add('hidden')
+			$courseNameHighliht.classList.remove('filter-option-on')
+			hiddenCounter++
 		}
 	})
-	if (hiddenCounter === $coursesName.length) {
+	if (hiddenCounter === $courses.length) {
 		$searchNotFound.classList.remove('hidden')
 	} else {
 		$searchNotFound.classList.add('hidden')
