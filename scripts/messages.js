@@ -3,7 +3,14 @@ const d = document,
 	$searchContent = d.querySelector('.search-dialog input'),
 	$topNavbar = d.querySelector('.top-navbar'),
 	$chats = d.querySelectorAll('.message-item'),
-	$searchNotFound = d.querySelector('.search-not-found')
+	$searchNotFound = d.querySelector('.search-not-found'),
+	$hiddenItemsForChat = d.querySelectorAll(
+		'.top-navbar,.search-dialog, main,.navbar-bottom'
+	),
+	$chat = d.querySelector('.chat'),
+	$chatContactName = d.querySelector('.chat-information-name'),
+	$messages = d.querySelector('.chat-messages'),
+	$message = d.querySelector('.chat-message-input')
 
 function searchItem(search) {
 	search = search.toUpperCase()
@@ -72,8 +79,65 @@ function changeNavBG() {
 	}
 }
 
+function openMessage(message) {
+	let $message = message
+	if (message.tagName !== 'FIGCAPTION') {
+		$message = message.parentElement
+	}
+	const $contactName = $message.querySelector('.message-item-name'),
+		contactName = $contactName.innerText
+	$chatContactName.textContent = contactName
+	toggleChat()
+}
+
+function toggleChat() {
+	$hiddenItemsForChat.forEach((el) => {
+		el.classList.toggle('hidden')
+	})
+	$chat.classList.toggle('hidden')
+}
+
+function sendNewMessage() {
+	const $lastMessage = d.querySelector('.chat-messages li:last-child'),
+		$clone = $lastMessage.cloneNode(true),
+		$newMessage = $clone.querySelector('p'),
+		$hourMessage = $clone.querySelector('small'),
+		now = new Date()
+	let hours = now.getHours()
+	minutes = now.getMinutes()
+
+	if (minutes < 9) minutes = `0${minutes}`
+
+	$newMessage.innerText = $message.value
+	$hourMessage.innerText = `${hours}:${minutes}`
+	$messages.appendChild($clone)
+	$clone.scrollIntoView({ behavior: 'smooth', block: 'start' })
+	$message.value = ''
+}
+
+function deleteCurrentChat() {
+	const $currentMessages = $messages.querySelectorAll('li')
+	$currentMessages.forEach(($currentMessage) => {
+		$messages.removeChild($currentMessage)
+	})
+}
+
 d.addEventListener('scroll', (e) => {
 	changeNavBG()
+})
+d.addEventListener('click', (e) => {
+	if (e.target.closest('.message-item figcaption')) {
+		openMessage(e.target)
+	}
+	if (e.target.matches('.chat-back-button')) {
+		toggleChat()
+	}
+	if (e.target.matches('.chat-send-button')) {
+		sendNewMessage()
+	}
+	if (e.target.matches('.chat-delete-button')) {
+		deleteCurrentChat()
+	}
 })
 d.addEventListener('keyup', (e) => {
 	if (e.target.matches('.search-dialog input')) {
