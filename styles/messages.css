@@ -184,7 +184,8 @@ textarea {
 	width: 100%;
 	background-color: var(--primary-bg-color);
 	padding: 1rem;
-	border-radius: var(--primary-border);
+	border-top-right-radius: var(--primary-border-radius);
+	border-top-left-radius: var(--primary-border-radius);
 	list-style: none;
 	display: flex;
 	flex-direction: column;
