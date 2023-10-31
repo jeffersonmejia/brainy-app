@@ -10,7 +10,8 @@ const d = document,
 	$chat = d.querySelector('.chat'),
 	$chatContactName = d.querySelector('.chat-information-name'),
 	$messages = d.querySelector('.chat-messages'),
-	$message = d.querySelector('.chat-message-input')
+	$message = d.querySelector('.chat-message-input'),
+	$dialogAlert = d.querySelector('.dialog-alert')
 
 function searchItem(search) {
 	search = search.toUpperCase()
@@ -112,20 +113,38 @@ function sendNewMessage() {
 	$hourMessage.innerText = `${hours}:${minutes}`
 	$messages.appendChild($clone)
 	$clone.scrollIntoView({ behavior: 'smooth', block: 'start' })
+	$message.focus()
 	$message.value = ''
 }
 
-function deleteCurrentChat() {
+function confirmDialog() {
+	$dialogAlert.classList.toggle()
+}
+
+function deleteCurrentChat(response) {
 	const $currentMessages = $messages.querySelectorAll('li')
-	$currentMessages.forEach(($currentMessage) => {
-		$messages.removeChild($currentMessage)
-	})
+	if (response) {
+		$currentMessages.forEach(($currentMessage) => {
+			$messages.removeChild($currentMessage)
+		})
+	}
+}
+
+function getConfirmResponse(response) {
+	const responseContent = response.innerText.toUpperCase(),
+		isConfirm = responseContent === 'CONFIRM'
+	$dialogAlert.classList.toggle('hidden')
+	return isConfirm
 }
 
 d.addEventListener('scroll', (e) => {
 	changeNavBG()
 })
 d.addEventListener('click', (e) => {
+	if (e.target.matches('.dialog-alert-response p')) {
+		const response = getConfirmResponse(e.target)
+		deleteCurrentChat(response)
+	}
 	if (e.target.closest('.message-item figcaption')) {
 		openMessage(e.target)
 	}
@@ -133,10 +152,10 @@ d.addEventListener('click', (e) => {
 		toggleChat()
 	}
 	if (e.target.matches('.chat-send-button')) {
-		sendNewMessage()
+		if ($message.value.length > 0) sendNewMessage()
 	}
 	if (e.target.matches('.chat-delete-button')) {
-		deleteCurrentChat()
+		$dialogAlert.classList.remove('hidden')
 	}
 })
 d.addEventListener('keyup', (e) => {
