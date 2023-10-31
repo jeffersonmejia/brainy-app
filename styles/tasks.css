@@ -280,6 +280,7 @@ main {
 	margin-left: auto;
 	width: 90px;
 }
+
 .navbar-bottom {
 	padding: 0.5rem 1rem;
 	border-top: var(--primary-border);
@@ -290,30 +291,32 @@ main {
 	right: 0;
 }
 .navbar-bottom ul {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 1rem;
+	height: fit-content;
 	list-style: none;
 }
 
 .navbar-bottom a {
 	color: inherit;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* background-color: var(--primary-bg-color); */
+	text-decoration: none;
+	/* border: var(--primary-border); */
+	/* border-radius: var(--secondary-border-radius); */
+	/* padding: 0.5rem 1rem; */
 }
 
-.navbar-bottom span {
-	background-color: var(--primary-bg-color);
-	padding: 0.5rem 1rem;
-	border-radius: var(--secondary-border-radius);
-	border: var(--primary-border);
+.navbar-bottom small {
+	font-size: 0.6rem;
+	text-align: center;
 }
-
-.navbar-bottom span.nav-item-on {
-	background-color: transparent;
-	color: var(--secondary-bg-color);
-	border: none;
-	background-color: var(--secondary-bg-color-dark);
+.navbar-bottom .nav-item-on :is(span, small) {
+	color: var(--primary-button-color);
 }
-
 .hidden {
 	display: none;
 }
