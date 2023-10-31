@@ -82,6 +82,7 @@ function changeNavBG() {
 
 function openMessage(message) {
 	let $message = message
+	const $lastMessage = d.querySelector('.chat-messages li:last-child')
 	if (message.tagName !== 'FIGCAPTION') {
 		$message = message.parentElement
 	}
@@ -89,6 +90,7 @@ function openMessage(message) {
 		contactName = $contactName.innerText
 	$chatContactName.textContent = contactName
 	toggleChat()
+	$lastMessage.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
 function toggleChat() {
