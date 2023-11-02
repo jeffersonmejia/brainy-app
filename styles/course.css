@@ -207,6 +207,7 @@ table :is(td, th, caption) {
 	padding: 4px;
 	font-size: 0.7rem;
 }
+
 .timeline-button {
 	margin-left: auto;
 	margin-top: 0.5rem;
@@ -228,13 +229,22 @@ table :is(td, th, caption) {
 	padding: 0.8rem 0.7rem;
 	border-top: 3px solid transparent;
 	border-bottom: 8px solid transparent;
-	color: gray;
 }
 .activities-section-units .activities-section-unit-on {
-	color: var(--primary-button-color);
-
 	border-top: 3px solid var(--primary-button-color);
 }
+
+.activities-section-units .activities-section-unit-locked {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	color: gray;
+}
+.activities-section-unit-locked span {
+	font-size: 0.9rem;
+}
+
 .activities-section h4 {
 	justify-content: flex-start;
 	margin-bottom: 0;
@@ -246,7 +256,6 @@ table :is(td, th, caption) {
 }
 .activities-section p {
 	text-align: justify;
-	margin-top: 0.5rem;
 	font-size: 0.8rem;
 }
 .activities-section .activities-section-objectives {
@@ -254,7 +263,7 @@ table :is(td, th, caption) {
 	font-size: 0.8rem;
 	margin-top: 0.2rem;
 }
-.activities-section :is(p, .activities-section-objectives) {
+.activities-section article :is(p, .activities-section-objectives) {
 	color: rgb(95, 95, 95);
 }
 .activities-section h5 {
@@ -300,6 +309,14 @@ li.activities-section-category-undelivered {
 }
 .activities-section-category {
 	font-size: 0.8rem;
+}
+.grades-section article {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+.grades-section :is(table, caption) {
+	background-color: var(--primary-bg-color);
 }
 .navbar-middel {
 	background-color: var(--secondary-bg-color);
