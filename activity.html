@@ -80,10 +80,21 @@
 				</ul>
 				<div class="group-button">
 					<a href="course.html" class="secondary-button">Volver</a>
-					<input type="file" class="primary-button" accept="application/pdf" />
+					<button class="primary-button" id="button-file">Select file</button>
+					<input
+						type="file"
+						accept="application/pdf"
+						id="input-file"
+						class="hidden"
+					/>
 				</div>
 			</article>
 		</main>
+		<section class="dragover-area visibility-off">
+			<article>
+				<h1>Drop it here</h1>
+			</article>
+		</section>
 		<nav class="navbar-bottom">
 			<ul>
 				<li class="nav-item-on">

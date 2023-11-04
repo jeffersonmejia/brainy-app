@@ -1,44 +1,8 @@
 const d = document,
-	$search = d.querySelector('.search-dialog'),
-	$searchContent = d.querySelector('.search-dialog input'),
-	$courses = d.querySelectorAll('.course-item'),
 	$topNavbar = d.querySelector('.top-navbar'),
-	$searchNotFound = d.querySelector('.search-not-found')
-
-function searchItem(search) {
-	let hiddenCounter = 0,
-		isEmptyQuery = search.length === 0
-
-	search = search.toUpperCase()
-	$courses.forEach(($course) => {
-		const $courseName = $course.querySelector('.course-item-name'),
-			$courseNameHighliht = $courseName.parentElement,
-			courseName = $courseName.innerText.toUpperCase(),
-			courseNameSplit = courseName.split('(')[0],
-			isFound = courseNameSplit.includes(search)
-
-		if (isEmptyQuery) {
-			$courseNameHighliht.classList.remove('filter-option-on')
-		}
-		if (isFound) {
-			$course.classList.remove('hidden')
-
-			if (!isEmptyQuery) {
-				$courseNameHighliht.classList.add('filter-option-on')
-			}
-			hiddenCounter--
-		} else {
-			$course.classList.add('hidden')
-			$courseNameHighliht.classList.remove('filter-option-on')
-			hiddenCounter++
-		}
-	})
-	if (hiddenCounter === $courses.length) {
-		$searchNotFound.classList.remove('hidden')
-	} else {
-		$searchNotFound.classList.add('hidden')
-	}
-}
+	$buttonFile = d.getElementById('button-file'),
+	$inputFile = d.getElementById('input-file'),
+	$dragover = d.querySelector('.dragover-area')
 
 function changeNavBG() {
 	const scrollY = window.scrollY
@@ -49,11 +13,37 @@ function changeNavBG() {
 	}
 }
 
+function handleDrop(event) {
+	const file = event.dataTransfer.files
+	console.log(file)
+}
+d.addEventListener('click', (e) => {
+	if (e.target.matches('#button-file')) {
+		$inputFile.click()
+	}
+})
 d.addEventListener('scroll', (e) => {
 	changeNavBG()
 })
 d.addEventListener('keyup', (e) => {
 	if (e.target.matches('.search-dialog input')) {
 		searchItem(e.target.value)
+	}
+})
+
+d.addEventListener('drop', (e) => {
+	e.preventDefault()
+	handleDrop(e)
+	console.log(e)
+})
+d.addEventListener('dragover', (e) => {
+	if ($dragover.classList.contains('visibility-off')) {
+		$dragover.classList.remove('visibility-off')
+	}
+})
+
+d.addEventListener('mouseout', (e) => {
+	if (!$dragover.classList.contains('visibility-off')) {
+		$dragover.classList.add('visibility-off')
 	}
 })
