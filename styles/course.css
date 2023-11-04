@@ -110,7 +110,8 @@ section {
 	flex-direction: column;
 	gap: 1rem;
 }
-article {
+article,
+.activity-information-ancle {
 	padding: 1rem;
 	border-radius: var(--secondary-border-radius);
 	background-color: var(--secondary-bg-color);
@@ -118,7 +119,8 @@ article {
 	display: flex;
 	flex-direction: column;
 }
-article h4 {
+
+:where(article, .activity-information-ancle) h4 {
 	font-size: 0.8rem;
 	display: flex;
 	align-items: center;
@@ -126,29 +128,33 @@ article h4 {
 	justify-content: flex-end;
 }
 
-article figure {
+:where(article, .activity-information-ancle) figure {
 	display: flex;
 	align-items: center;
 	gap: 4px;
 }
-article h4 {
+:where(article, .activity-information-ancle) h4 {
 	margin-bottom: 0.5rem;
 }
-article h4 span:first-of-type {
+:where(article, .activity-information-ancle) h4 span:first-of-type {
 	font-size: 1rem;
 }
-article figcaption {
+:where(article, .activity-information-ancle) figcaption {
 	display: flex;
 	align-items: center;
 }
 
-article a.primary-button {
+:where(article, .activity-information-ancle) a.primary-button {
 	padding: 16px;
 	text-decoration: none;
 	font-size: 0.8rem;
 	display: flex;
 	align-items: center;
 	margin-left: 0.2rem;
+}
+.activity-information-ancle {
+	text-decoration: none;
+	color: inherit;
 }
 .general-section-contact {
 	margin-left: auto;
@@ -263,7 +269,8 @@ table :is(td, th, caption) {
 	font-size: 0.8rem;
 	margin-top: 0.2rem;
 }
-.activities-section article :is(p, .activities-section-objectives) {
+:where(.activities-section article, .activity-information-ancle)
+	:is(p, .activities-section-objectives) {
 	color: rgb(95, 95, 95);
 }
 .activities-section h5 {
