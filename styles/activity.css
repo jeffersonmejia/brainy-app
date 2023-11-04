@@ -58,6 +58,7 @@ input {
 	font-family: 'Courier New', Courier, monospace;
 	font-weight: 600;
 }
+
 .primary-button {
 	background-color: var(--primary-button-color);
 	border: none;
@@ -68,6 +69,7 @@ input {
 	height: 30px;
 	cursor: pointer;
 }
+
 .top-navbar {
 	padding: 1rem 1.5rem;
 	display: flex;
@@ -95,7 +97,7 @@ input {
 }
 main {
 	padding: 1rem 1.5rem;
-	min-height: 95vh;
+	min-height: 98vh;
 }
 article {
 	padding: 1rem;
@@ -140,10 +142,27 @@ article ul {
 .tags span {
 	font-size: 1rem;
 }
+.group-button {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 0.5rem;
+	margin-bottom: 1rem;
+}
 article .primary-button {
 	width: 120px;
-	margin-left: auto;
-	margin-top: 0.5rem;
+}
+article .secondary-button {
+	background-color: var(--primary-bg-color);
+	text-decoration: none;
+	height: 30px;
+	width: 90px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: inherit;
+	border: var(--primary-border);
+	border-radius: var(--secondary-border-radius);
 }
 .navbar-bottom {
 	padding: 0.5rem 1rem;
