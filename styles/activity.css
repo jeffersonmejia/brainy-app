@@ -97,7 +97,8 @@ input {
 }
 main {
 	padding: 1rem 1.5rem;
-	min-height: 98vh;
+	min-height: 100vh;
+	margin-bottom: 4vh;
 }
 article {
 	padding: 1rem;
@@ -143,9 +144,14 @@ article ul {
 	font-size: 1rem;
 }
 .file-uploaded {
-	color: black;
+	width: 70%;
+	margin-top: 1rem;
 	text-align: right;
-	margin: 1rem 0;
+	margin-left: auto;
+	color: black;
+}
+.file-uploaded-on {
+	color: var(--primary-button-color);
 }
 .group-button {
 	display: flex;
@@ -153,6 +159,9 @@ article ul {
 	justify-content: space-between;
 	margin-top: 0.5rem;
 	margin-bottom: 1rem;
+}
+.cancel-deliver-button {
+	cursor: pointer;
 }
 article .primary-button {
 	width: 120px;

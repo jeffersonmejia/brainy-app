@@ -3,7 +3,10 @@ const d = document,
 	$buttonFile = d.getElementById('button-file'),
 	$inputFile = d.getElementById('input-file'),
 	$dragover = d.querySelector('.dragover-area'),
-	$fileUploaded = d.querySelector('.file-uploaded p')
+	$fileUploaded = d.querySelector('.file-uploaded p'),
+	$groupDeliverButton = d.querySelector('.group-deliver-button'),
+	$groupUploadButton = d.querySelector('.group-upload-button'),
+	$taskState = d.querySelector('.activities-section-category-pending')
 
 function changeNavBG() {
 	const scrollY = window.scrollY
@@ -19,14 +22,52 @@ function handleDrop(file) {
 }
 
 function getFileName(path) {
-	const copy = path.split('\\'),
-		name = copy[copy.length - 1]
-	$fileUploaded.innerText = name
+	const copy = path.split('\\')
+	let name = copy[copy.length - 1]
+	if (name.length >= 32) {
+		name = `${name.slice(0, 32)}...`
+	}
+	if (name.length > 0) {
+		$fileUploaded.innerText = name
+		$fileUploaded.classList.add('file-uploaded-on')
+		$groupDeliverButton.classList.remove('hidden')
+		$groupUploadButton.classList.add('hidden')
+	} else {
+		$fileUploaded.innerText = 'No file uploaded'
+		$fileUploaded.classList.remove('file-uploaded-on')
+		$groupDeliverButton.classList.add('hidden')
+		$groupUploadButton.classList.remove('hidden')
+	}
+}
+function cancelDeliver() {
+	$groupDeliverButton.classList.add('hidden')
+	$groupUploadButton.classList.remove('hidden')
+	$fileUploaded.classList.remove('file-uploaded-on')
+	$fileUploaded.innerText = 'No file uploaded'
+	$inputFile.value = ''
+}
+
+function deliverTask() {
+	const $stateIcon = $taskState.querySelector('span'),
+		$stateText = $taskState.querySelector('small')
+
+	$groupDeliverButton.classList.add('hidden')
+	$groupUploadButton.classList.add('hidden')
+	$fileUploaded.classList.remove('file-uploaded-on')
+
+	$stateIcon.innerText = 'task_alt'
+	$stateText.innerText = 'Delivered'
 }
 
 d.addEventListener('click', (e) => {
 	if (e.target.matches('#button-file')) {
 		$inputFile.click()
+	}
+	if (e.target.matches('.cancel-deliver-button')) {
+		cancelDeliver()
+	}
+	if (e.target.matches('.send-deliver-button')) {
+		deliverTask()
 	}
 })
 d.addEventListener('scroll', (e) => {
