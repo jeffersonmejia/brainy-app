@@ -55,6 +55,8 @@ function deliverTask() {
 	$groupDeliverButton.classList.add('hidden')
 	$groupUploadButton.classList.add('hidden')
 	$fileUploaded.classList.remove('file-uploaded-on')
+	$fileUploaded.parentElement.style.marginTop = '0.5rem'
+	$fileUploaded.parentElement.style.marginBottom = '1rem'
 
 	$stateIcon.innerText = 'task_alt'
 	$stateText.innerText = 'Delivered'
