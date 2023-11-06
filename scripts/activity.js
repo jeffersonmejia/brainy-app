@@ -2,7 +2,8 @@ const d = document,
 	$topNavbar = d.querySelector('.top-navbar'),
 	$buttonFile = d.getElementById('button-file'),
 	$inputFile = d.getElementById('input-file'),
-	$dragover = d.querySelector('.dragover-area')
+	$dragover = d.querySelector('.dragover-area'),
+	$fileUploaded = d.querySelector('.file-uploaded p')
 
 function changeNavBG() {
 	const scrollY = window.scrollY
@@ -16,6 +17,13 @@ function changeNavBG() {
 function handleDrop(file) {
 	console.log(file)
 }
+
+function getFileName(path) {
+	const copy = path.split('\\'),
+		name = copy[copy.length - 1]
+	$fileUploaded.innerText = name
+}
+
 d.addEventListener('click', (e) => {
 	if (e.target.matches('#button-file')) {
 		$inputFile.click()
@@ -44,5 +52,11 @@ d.addEventListener('dragover', (e) => {
 d.addEventListener('mouseout', (e) => {
 	if (!$dragover.classList.contains('visibility-off')) {
 		$dragover.classList.add('visibility-off')
+	}
+})
+
+d.addEventListener('change', (e) => {
+	if (e.target.matches('#input-file')) {
+		getFileName(e.target.value)
 	}
 })
