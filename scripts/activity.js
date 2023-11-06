@@ -13,8 +13,7 @@ function changeNavBG() {
 	}
 }
 
-function handleDrop(event) {
-	const file = event.dataTransfer.files
+function handleDrop(file) {
 	console.log(file)
 }
 d.addEventListener('click', (e) => {
@@ -33,13 +32,13 @@ d.addEventListener('keyup', (e) => {
 
 d.addEventListener('drop', (e) => {
 	e.preventDefault()
-	handleDrop(e)
-	console.log(e)
+	const file = e.dataTransfer.files
+	handleDrop(file)
 })
+
 d.addEventListener('dragover', (e) => {
-	if ($dragover.classList.contains('visibility-off')) {
-		$dragover.classList.remove('visibility-off')
-	}
+	e.preventDefault()
+	$dragover.classList.remove('visibility-off')
 })
 
 d.addEventListener('mouseout', (e) => {
