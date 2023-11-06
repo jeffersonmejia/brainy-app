@@ -6,7 +6,9 @@ const d = document,
 	$fileUploaded = d.querySelector('.file-uploaded p'),
 	$groupDeliverButton = d.querySelector('.group-deliver-button'),
 	$groupUploadButton = d.querySelector('.group-upload-button'),
-	$taskState = d.querySelector('.activities-section-category-pending')
+	$taskState = d.querySelector('.activities-section-category-pending'),
+	$taskTime = d.querySelector('.activities-section-category-left'),
+	$taskGrade = d.querySelector('.activities-section-category-grade small')
 
 function changeNavBG() {
 	const scrollY = window.scrollY
@@ -50,13 +52,15 @@ function cancelDeliver() {
 function deliverTask() {
 	const $stateIcon = $taskState.querySelector('span'),
 		$stateText = $taskState.querySelector('small')
-
 	$groupDeliverButton.classList.add('hidden')
 	$groupUploadButton.classList.add('hidden')
 	$fileUploaded.classList.remove('file-uploaded-on')
 
 	$stateIcon.innerText = 'task_alt'
 	$stateText.innerText = 'Delivered'
+	$taskTime.classList.add('hidden')
+
+	$taskGrade.innerText = 'Not yet'
 }
 
 d.addEventListener('click', (e) => {

@@ -241,7 +241,7 @@ article .secondary-button {
 	color: var(--primary-button-color);
 }
 
-.hidden {
+body .hidden {
 	display: none;
 }
 .visibility-off {
