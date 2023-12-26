@@ -8,7 +8,8 @@ const d = document,
 	$groupUploadButton = d.querySelector('.group-upload-button'),
 	$taskState = d.querySelector('.activities-section-category-pending'),
 	$taskTime = d.querySelector('.activities-section-category-left'),
-	$taskGrade = d.querySelector('.activities-section-category-grade small')
+	$taskGrade = d.querySelector('.activities-section-category-grade small'),
+	$cancelDelibery = d.querySelector('.cancel-deliver-button')
 
 function changeNavBG() {
 	const scrollY = window.scrollY
@@ -49,10 +50,11 @@ function cancelDeliver() {
 	$inputFile.value = ''
 }
 
-function deliverTask() {
+function deliverTask($deliberButton) {
 	const $stateIcon = $taskState.querySelector('span'),
-		$stateText = $taskState.querySelector('small')
-	$groupDeliverButton.classList.add('hidden')
+		$stateText = $taskState.querySelector('small'),
+		$successMessage = $deliberButton
+
 	$groupUploadButton.classList.add('hidden')
 	$fileUploaded.classList.remove('file-uploaded-on')
 	$fileUploaded.parentElement.style.marginTop = '0.5rem'
@@ -63,6 +65,13 @@ function deliverTask() {
 	$taskTime.classList.add('hidden')
 
 	$taskGrade.innerText = 'Not yet'
+	$successMessage.classList.add('deliber-success-button')
+	$successMessage.textContent = 'Delibered'
+	$cancelDelibery.classList.add('visibility-off')
+
+	setTimeout(() => {
+		$groupDeliverButton.classList.add('hidden')
+	}, 1500)
 }
 
 d.addEventListener('click', (e) => {
@@ -73,7 +82,7 @@ d.addEventListener('click', (e) => {
 		cancelDeliver()
 	}
 	if (e.target.matches('.send-deliver-button')) {
-		deliverTask()
+		deliverTask(e.target)
 	}
 })
 d.addEventListener('scroll', (e) => {

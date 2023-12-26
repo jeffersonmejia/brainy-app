@@ -204,6 +204,11 @@ article .secondary-button {
 	font-size: 1.7rem;
 	text-align: center;
 }
+.deliber-success-button {
+	background-color: rgb(196, 236, 196);
+	color: rgb(79, 148, 79);
+}
+
 .navbar-bottom {
 	padding: 0.5rem 1rem;
 	border-top: var(--primary-border);
@@ -240,7 +245,6 @@ article .secondary-button {
 .navbar-bottom .nav-item-on :is(span, small) {
 	color: var(--primary-button-color);
 }
-
 body .hidden {
 	display: none;
 }

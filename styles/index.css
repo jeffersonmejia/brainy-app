@@ -19,7 +19,7 @@ html {
 }
 h1 {
 	font-size: 1.5rem;
-	font-weight: 800;
+	font-weight: 600;
 }
 
 .primary-button {
@@ -50,6 +50,9 @@ input[type='reset'] {
 }
 
 body {
+	width: 100%;
+	max-width: 400px;
+	margin: auto;
 	height: 85vh;
 	display: flex;
 	flex-direction: column;
@@ -76,6 +79,7 @@ fieldset {
 .primary-button {
 	width: 100px;
 	margin-left: auto;
+	cursor: pointer;
 }
 .group-button {
 	list-style-type: none;

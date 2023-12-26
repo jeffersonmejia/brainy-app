@@ -378,12 +378,117 @@ li.activities-section-category-undelivered {
 	font-size: 0.6rem;
 	text-align: center;
 }
-.navbar-bottom .nav-item-on :is(span, small) {
+.navbar-bottom .nav-item-on :is(span, small),
+aside .nav-item-on :is(span, small) {
 	color: var(--primary-button-color);
 }
+.navbar-middel-desktop {
+	display: none;
+}
+aside {
+	display: none;
+}
+
 .hidden {
 	display: none;
 }
 .visibility-off {
 	visibility: hidden;
+}
+@media screen and (min-width: 600px) {
+	body {
+		display: grid;
+		grid-template-columns: 70px auto;
+		background-color: white;
+	}
+	.search-dialog {
+		display: none;
+	}
+	.top-navbar-fixed {
+		grid-column: 1/-1;
+	}
+	.logo {
+		font-size: 1rem;
+		width: 100%;
+	}
+	.top-navbar-fixed .search-dialog {
+		display: none;
+	}
+	.top-navbar {
+		grid-column: 1/-1;
+		display: flex;
+		justify-content: space-between;
+		gap: 1.3rem;
+		padding-left: 0.8rem;
+		align-items: center;
+		border-bottom: none;
+	}
+	.top-navbar .search-dialog {
+		display: block;
+		padding: 0;
+		margin: 0;
+		width: 100%;
+	}
+	.navbar-middel-desktop {
+		position: sticky;
+		border-top: 0;
+		display: flex;
+		align-items: center;
+		width: 100%;
+		justify-content: center;
+	}
+	.navbar-middel-desktop ul {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		width: 100%;
+		max-width: 1080px;
+	}
+	.navbar-middel-desktop li {
+		padding: 0.8rem 1rem;
+	}
+	.navbar-middel-mobile {
+		display: none;
+	}
+	aside {
+		background-color: white;
+		width: fit-content;
+		height: 70vh;
+		display: flex;
+		grid-column: 1/2;
+		position: sticky;
+		top: 9.5vh;
+	}
+	aside ul {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		padding: 1rem 0.5rem;
+		padding-right: 0;
+	}
+	aside a {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-decoration: none;
+		color: black;
+	}
+	aside a small {
+		font-size: 0.6rem;
+	}
+	.courses {
+		grid-column: 2/-1;
+		width: 100%;
+		padding-left: 1rem;
+	}
+	.navbar-bottom {
+		display: none;
+	}
+	section {
+		max-width: 780px;
+		margin: auto;
+	}
+	.grades-section article {
+		border: none;
+	}
 }
